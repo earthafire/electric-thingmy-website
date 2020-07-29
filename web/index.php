@@ -1,6 +1,17 @@
-<?php 
-    $variable = $_REQUEST["token"];
-?>
+<p>paste this command in minecraft: </p>
 
-<p> type in the command below in your minecraft client: </p>
-<p> /thingmy oauth set <?php echo $variable; ?> </p>
+<p>/thingmy oauth set <span id="oauthcode"><span></p>
+
+<script>
+let hash = window.location.hash;
+let params = hash.split("&");
+
+for (let p of params) {
+    if (p.startsWith("#access_token")) {
+        let accesstoken = p.split("=")[1];
+        let element = document.getElementById("oauthcode");
+        element.innerHTML = accesstoken;
+        break;
+    }
+}
+</script>
